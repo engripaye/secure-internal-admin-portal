@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: secure-internal-admin-portal
+  datasource:
+    url:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+            scope:
+              - openid
+              - profile
+              - email
+            redirect-uri:
+        provider:
+          google:
+            issuer-uri:
+
+server:
+  port: 8081
+
+
+# Appl specific settings
+app:
+  allowed-google-domain:
+  admin-default-email:
+
+
+logging:
+  level:
+    org.springframework.security: INFO
