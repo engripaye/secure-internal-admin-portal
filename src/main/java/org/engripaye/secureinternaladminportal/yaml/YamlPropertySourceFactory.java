@@ -1,5 +1,4 @@
-package org.engripaye.secureinternaladminportal;
-
+package org.engripaye.secureinternaladminportal.yaml;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.PropertySource;
@@ -16,9 +15,12 @@ public class YamlPropertySourceFactory implements PropertySourceFactory {
         YamlPropertiesFactoryBean factory = new YamlPropertiesFactoryBean();
         factory.setResources(resource.getResource());
         Properties properties = factory.getObject();
-        return new PropertiesPropertySource(
-                name, // will never be null per Spring contract
-                properties
-        );
+
+        // Fallback to filename if no name provided
+        String sourceName = (name != null && !name.isEmpty())
+                ? name
+                : resource.getResource().getFilename();
+
+        return new PropertiesPropertySource(sourceName, properties);
     }
 }
