@@ -1,7 +1,6 @@
 package org.engripaye.secureinternaladminportal.controller;
 
 import org.engripaye.secureinternaladminportal.service.UserService;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
