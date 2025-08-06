@@ -1,0 +1,13 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Admin</title></head>
+<body>
+<h1>Admin Dashboard</h1>
+<p th:text="'Logged in as: ' + ${user}"></p>
+
+<form th:action="@{/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>
