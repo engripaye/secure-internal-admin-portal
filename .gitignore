@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ignore sensitive secret
+src/main/resources/application-secret.yaml
