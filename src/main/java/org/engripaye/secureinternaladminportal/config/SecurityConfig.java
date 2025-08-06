@@ -40,13 +40,11 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
-
-                .csrf(csrf -> csrf) // CSRF enabled bt default; ensure form tokens are used in thymeleaf
-                .sessionManagement(session -> session
-                        .sessionFixation().migrateSession())
-                .headers(headers -> headers
-                        .contentSecurityPolicy("default-src 'self'") // customize as needed
-                        .frameOptions().sameOrigin());
+                .sessionManagement(session -> session.sessionFixation().migrateSession())
+                .headers(headers -> {
+                    headers.contentSecurityPolicy(csp -> csp.policyDirectives("default-src 'self'"));
+                    headers.frameOptions(frameOptions -> frameOptions.sameOrigin());
+                });
 
              return http.build();
     }
