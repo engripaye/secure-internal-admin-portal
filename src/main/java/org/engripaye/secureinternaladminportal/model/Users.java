@@ -27,6 +27,7 @@ public class Users {
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Roles> roles = new HashSet<>();
     private boolean enabled = true;
+    private boolean disabled;
 
     // ✅ Audit Fields
     @CreatedDate
@@ -82,5 +83,13 @@ public class Users {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
     }
 }

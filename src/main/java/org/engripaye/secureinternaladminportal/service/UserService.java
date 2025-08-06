@@ -31,4 +31,11 @@ public class UserService {
             return userRepository.save(u);
         });
     }
+
+    public void disableUser(Long id){
+        userRepository.findById(id).ifPresent(users -> {
+            users.setDisabled(true);
+            userRepository.save(users);
+        });
+    }
 }
