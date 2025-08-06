@@ -26,7 +26,8 @@ spring:
         provider:
           google:
             issuer-uri:
-
+  profiles:
+    active: secret
 server:
   port: 8081
 
